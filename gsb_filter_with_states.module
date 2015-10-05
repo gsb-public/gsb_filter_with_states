@@ -1,0 +1,23 @@
+<?php
+
+//function gsb_feature_admission_event_display_views_post_render(&$views) {
+//  if ($views->name == 'admission_events' && $views->current_display == 'mba_admission_panel_pane') {
+//    drupal_add_js(drupal_get_path('module', 'gsb_feature_admission_event_display') . '/js/gsb_feature_admission_event_display.js');
+//  }
+//}
+function gsb_filter_with_states_views_pre_render ( &$view ) {
+  //List of views that need filter with states
+  $view_list = array("gsb_book_listing",
+                     "gsb_case_listing",
+                     "gsb_publications_listing",
+                     "gsb_working_paper_listing",
+                     "faculty_filters",
+                     "gsb_event",
+                     "admission_events",
+                     "club_filters",
+                     "gsb_all_research_listing",
+                     "msx_fellows");
+  if (in_array($view->name,  $view_list)) {
+    drupal_add_js(drupal_get_path('module', 'gsb_filter_with_states') . '/js/gsb_filter_with_states.js');
+  }
+}

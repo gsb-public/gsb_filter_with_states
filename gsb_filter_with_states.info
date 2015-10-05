@@ -1,0 +1,4 @@
+name = GSB Filters with States
+description = Add states to exposed search filters
+package = GSB
+core = 7.x
