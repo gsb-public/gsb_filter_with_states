@@ -34,14 +34,16 @@
               if (search_text != "") {
                 $("#" + current_form + ' .results-wrapper').append('<span class="results-text">and</span>');
               }
+              $("#" + current_form + ' .results-wrapper').append('<div class="filters-wrapper">')
               $checkboxes.each(function () {
                 if (this.checked) {
-                var sThisVal = (this.checked ? $(this).attr("id") : "");
-                var checked_label = $('label[for=' + sThisVal + ']').text();
-                $checked_arr[checked_label] = sThisVal;
-                $("#" + current_form + ' .results-wrapper').append('<span class="filter-button"><span class="term">' + checked_label + '</span><a class="filter-exit">Clear</a></span>');
+                  var sThisVal = (this.checked ? $(this).attr("id") : "");
+                  var checked_label = $('label[for=' + sThisVal + ']').text();
+                  $checked_arr[checked_label] = sThisVal;
+                  $("#" + current_form + ' .results-wrapper').append('<span class="filter-button"><span class="term">' + checked_label + '</span><a class="filter-exit">Clear</a></span>');
                 }
               });
+              $("#" + current_form + ' .results-wrapper').append('</div>');
             }
 
           $("#" + current_form + ' .filter-results-wrapper').append('</div>');
@@ -60,7 +62,7 @@
           }
           else {
             $curr = $(this).parent().text();
-            $curr_text = $curr.trim().substring(0, $curr.length - 7);
+            $curr_text = $curr.trim().substring(0, $curr.length - 5);
             event.preventDefault();
             var result = $checked_arr[$curr_text.trim()];
             $("#" + result).prop('checked', false);
