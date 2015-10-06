@@ -46,11 +46,11 @@
               $("#" + current_form + ' .results-wrapper').append('</div>');
             }
 
-          $("#" + current_form + ' .filter-results-wrapper').append('</div>');
+            $("#" + current_form + ' .filter-results-wrapper').append('</div>');
             if ((search_text != "" && $checked_count > 0) || ( $checked_count > 1)) {
               $("#" + current_form + ' .filter-results-wrapper').append('<div class="form-actions form-wrapper" id="edit-actions"><input type="reset" id="edit-reset" name="op" value="Clear All" class="form-reset"></div>');
             }
-          $("#" + current_form + ' .views-exposed-form').append('</div>');
+            $("#" + current_form + ' .views-exposed-form').append('</div>');
           }
         }
         //clearing the form when clear all is pressed or any of the close marks are checked
@@ -78,4 +78,6 @@
     }
   }
 })(jQuery);
+
+
 
