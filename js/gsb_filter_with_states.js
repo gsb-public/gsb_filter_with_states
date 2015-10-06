@@ -28,18 +28,18 @@
           if ($(".filter-results-wrapper").length == 1) {
             $("#" + current_form + ' .filter-results-wrapper').append('<div class="results-wrapper"><div class="results-text">Results for</div>');
             if (search_text != "") {
-              $("#" + current_form + ' .results-wrapper').append('<span class="term-searched"><span class="term">' + search_text + '</span><span class="filter-exit">  Clear  </span></span>');
+              $("#" + current_form + ' .results-wrapper').append('<span class="term-searched"><span class="term">' + search_text + '</span><a class="filter-exit">Clear</a></span>');
             }
             if ($checked_count > 0) {
               if (search_text != "") {
-                $("#" + current_form + ' .results-wrapper').append('<span class="results-text"> and </span>');
+                $("#" + current_form + ' .results-wrapper').append('<span class="results-text">and</span>');
               }
               $checkboxes.each(function () {
                 if (this.checked) {
                 var sThisVal = (this.checked ? $(this).attr("id") : "");
                 var checked_label = $('label[for=' + sThisVal + ']').text();
                 $checked_arr[checked_label] = sThisVal;
-                $("#" + current_form + ' .results-wrapper').append('<span class="filter-button">' + checked_label + '<a  class="filter-exit">  Clear  </a></span>');
+                $("#" + current_form + ' .results-wrapper').append('<span class="filter-button"><span class="term">' + checked_label + '</span><a class="filter-exit">Clear</a></span>');
                 }
               });
             }
