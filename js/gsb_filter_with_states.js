@@ -34,14 +34,17 @@
               if (search_text != "") {
                 $("#" + current_form + ' .results-wrapper').append('<span class="results-text"> and </span>');
               }
+              $("#" + current_form + ' .results-wrapper').append('<div class="filters-wrapper">')
               $checkboxes.each(function () {
                 if (this.checked) {
                 var sThisVal = (this.checked ? $(this).attr("id") : "");
                 var checked_label = $('label[for=' + sThisVal + ']').text();
                 $checked_arr[checked_label] = sThisVal;
-                $("#" + current_form + ' .results-wrapper').append('<span class="filter-button">' + checked_label + '<a  class="filter-exit">  Clear  </a></span>');
+                  $("#" + current_form + ' .filters-wrapper').append('<span class="filter-button">' + checked_label + '<a  class="filter-exit">  Clear  </a></span>');
+
                 }
               });
+              $("#" + current_form + ' .results-wrapper').append('</div>');
             }
 
           $("#" + current_form + ' .filter-results-wrapper').append('</div>');
