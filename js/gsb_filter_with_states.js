@@ -12,7 +12,6 @@
         }
         var $checkboxes = $('input:checkbox');
         var $checked_count = $checkboxes.filter(':checked').length;
-        var $checked_arr = {};
         if (search_text != "" || $checked_count > 0) {
           //get the current form id
           var current_form ="";
@@ -28,6 +27,9 @@
           if ($(".filter-results-wrapper").length == 1) {
             $("#" + current_form + ' .filter-results-wrapper').append('<div class="results-wrapper"><div class="results-text">Results for</div>');
             if (search_text != "") {
+              if(search_text.length > 19){
+                search_text = search_text.substring(0,19) + '...';
+              }
               $("#" + current_form + ' .results-wrapper').append('<span class="term-searched"><span class="term">' + search_text + '</span><a class="filter-exit">Clear</a></span>');
             }
             if ($checked_count > 0) {
@@ -39,8 +41,10 @@
                 if (this.checked) {
                   var sThisVal = (this.checked ? $(this).attr("id") : "");
                   var checked_label = $('label[for=' + sThisVal + ']').text();
-                  $checked_arr[checked_label] = sThisVal;
-                  $("#" + current_form + ' .results-wrapper').append('<span class="filter-button"><span class="term">' + checked_label + '</span><a class="filter-exit">Clear</a></span>');
+                  if (checked_label.length > 19){
+                    checked_label = checked_label.substring(0,19) + '...';
+                  }
+                  $("#" + current_form + ' .results-wrapper').append('<span class="filter-button"><span class="term"><span style="display:none">' + sThisVal +'|</span>' + checked_label + '</span><a class="filter-exit">Clear</a></span>');
                 }
               });
               $("#" + current_form + ' .results-wrapper').append('</div>');
@@ -65,9 +69,9 @@
           }
           else {
             $curr = $(this).parent().text();
-            $curr_text = $curr.trim().substring(0, $curr.length - 5);
+            $curr_text =$curr.split('|');
             event.preventDefault();
-            var result = $checked_arr[$curr_text.trim()];
+            var result = $curr_text[0];
             $("#" + result).prop('checked', false);
             $("#" + result).change();
           }
