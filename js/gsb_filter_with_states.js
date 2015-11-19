@@ -87,7 +87,8 @@
         $(' input:checkbox').removeAttr('checked');
         $("#edit-date-search-value-datepicker-popup-0").val("");
         $("#edit-field-event-date-value-value-datepicker-popup-0").val("");
-        $("#" + current_form + ' .views-submit-button input').click();
+        //$("#" + current_form + ' .views-submit-button input').click();
+        $('.views-submit-button input').click();
       });
 
       var q = ($(location).attr('href')).split('?');
@@ -115,8 +116,11 @@
           else {
             current_form = $checkboxes.filter(':checked').first().closest('form').attr('id');
           }
-          $("#" + current_form + ' .views-exposed-form').append('<div class="filter-results-wrapper">');
+          if ($(".filter-results-wrapper").length == 0) {
+            $("#" + current_form + ' .views-exposed-form').append('<div class="filter-results-wrapper">');
+          }
           if ($(".filter-results-wrapper").length == 1) {
+            $(".filter-results-wrapper").empty();
             $("#" + current_form + ' .filter-results-wrapper').append('<div class="results-wrapper"><div class="results-text">Results for</div>');
             if (search_text != "") {
               if(search_text.length > 19){
@@ -124,7 +128,6 @@
               }
               $("#" + current_form + ' .results-wrapper').append('<div class="filters-wrapper">');
               $("#" + current_form + ' .results-wrapper').append('<span class="filter-button"><span class="term-searched"><span class="term">' + search_text + '</span><a class="filter-exit">Clear</a></span></span>');
-
             }
             if ( date_range != "" ) {
               if ($(".filters-wrapper").length == 0){
@@ -133,10 +136,13 @@
               $("#" + current_form + ' .results-wrapper').append('<span class="filter-button"><span class="date-searched"><span class="term">' + (date_range.substring(0,19) + '...') + '</span><a class="filter-exit">Clear</a></span></span>');
             }
             if ($checked_count > 0) {
+              var sThisVal = "";
+              var checked_label = "";
               $checkboxes.each(function () {
                 if (this.checked) {
-                  var sThisVal = (this.checked ? $(this).attr("id") : "");
-                  var checked_label = $('label[for=' + sThisVal + ']').text();
+                  sThisVal = (this.checked ? $(this).attr("id") : "");
+                  checked_label = $('label[for=' + sThisVal + ']').text();
+
                   if (checked_label.length > 19){
                     checked_label = checked_label.substring(0,19) + '...';
                   }
@@ -183,6 +189,10 @@
           $(location).attr('href', q[0]);
         });
       }
+
+
+
+
     }
   }
 })(jQuery);
