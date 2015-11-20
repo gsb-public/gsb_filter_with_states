@@ -142,20 +142,21 @@
                 if (this.checked) {
                   sThisVal = (this.checked ? $(this).attr("id") : "");
                   checked_label = $('label[for=' + sThisVal + ']').text();
-
                   if (checked_label.length > 19){
                     checked_label = checked_label.substring(0,19) + '...';
                   }
                   $("#" + current_form + ' .results-wrapper').append('<span class="filter-button"><span class="term"><span style="display:none">' + sThisVal +'|</span>' + checked_label + '</span><a class="filter-exit">Clear</a></span>');
                 }
+
               });
               $("#" + current_form + ' .results-wrapper').append('</div>');
             }
 
             $("#" + current_form + ' .filter-results-wrapper').append('</div>');
             if ((search_text != "" && $checked_count > 0) || ( $checked_count > 1 || (search_text != "" && date_range != "") || (date_range != "" && $checked_count > 0))) {
-              $("#" + current_form + ' .filter-results-wrapper').append('<div class="form-actions form-wrapper" id="edit-actions"><input type="reset" id="edit-reset" name="op" value="Clear All" class="form-reset"></div>');
+              $("#" + current_form + ' .results-wrapper').append('<span class="form-actions form-wrapper" id="edit-actions"><input type="reset" id="edit-reset" name="op" value="Clear All" class="form-reset"></span>');
             }
+            $("#" + current_form + ' .filter-results-wrapper').append('</div>');
             $("#" + current_form + ' .views-exposed-form').append('</div>');
           }
         }
@@ -189,9 +190,6 @@
           $(location).attr('href', q[0]);
         });
       }
-
-
-
 
     }
   }
