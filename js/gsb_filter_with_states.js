@@ -87,7 +87,6 @@
         $(' input:checkbox').removeAttr('checked');
         $("#edit-date-search-value-datepicker-popup-0").val("");
         $("#edit-field-event-date-value-value-datepicker-popup-0").val("");
-        //$("#" + current_form + ' .views-submit-button input').click();
         $('.views-submit-button input').click();
       });
 
@@ -101,7 +100,7 @@
         if (typeof(search_text) === 'undefined' ){
           search_text = "";
         }
-        var $checkboxes = $('input:checkbox');
+        var $checkboxes = $(' input:checkbox');
         var $checked_count = $checkboxes.filter(':checked').length;
         if (search_text != "" || $checked_count > 0 || date_range != "") {
           //get the current form id
@@ -137,17 +136,16 @@
             }
             if ($checked_count > 0) {
               var sThisVal = "";
-              var checked_label = "";
+              var $checked_label = "";
               $checkboxes.each(function () {
                 if (this.checked) {
                   sThisVal = (this.checked ? $(this).attr("id") : "");
-                  checked_label = $('label[for=' + sThisVal + ']').text();
-                  if (checked_label.length > 19){
-                    checked_label = checked_label.substring(0,19) + '...';
-                  }
-                  $("#" + current_form + ' .results-wrapper').append('<span class="filter-button"><span class="term"><span style="display:none">' + sThisVal +'|</span>' + checked_label + '</span><a class="filter-exit">Clear</a></span>');
+                  $checked_label = $('label[for=' + sThisVal + ']').text();
+                    if ($checked_label.length > 19) {
+                      $checked_label = $checked_label.substring(0, 19) + '...';
+                    }
+                    $("#" + current_form + ' .results-wrapper').append('<span class="filter-button"><span class="term"><span style="display:none">' + sThisVal + '|</span>' + $checked_label + '</span><a class="filter-exit">Clear</a></span>');
                 }
-
               });
               $("#" + current_form + ' .results-wrapper').append('</div>');
             }
