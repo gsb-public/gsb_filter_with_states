@@ -90,11 +90,10 @@
         $('.views-submit-button input').click();
       });
 
-      var q = ($(location).attr('href')).split('?');
-      history.pushState(null, null,q[0].toString());
-
       //Start adding states
       if ($('.views-exposed-widgets input:checkbox').length > 0) {
+        var q = ($(location).attr('href')).split('?');
+        history.pushState(null, null,q[0].toString());      
         //all-research special case
         //views-exposed-form-gsb-all-research-listing-all-research-panel-pane
         if (typeof(search_text) === 'undefined' ){
