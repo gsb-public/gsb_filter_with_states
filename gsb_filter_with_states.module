@@ -8,6 +8,7 @@
 function gsb_filter_with_states_views_pre_render ( &$view ) {
   //List of views that need filter with states
   $view_list = array("gsb_book_listing",
+                     "gsb_act_project_listing",
                      "gsb_case_listing",
                      "gsb_publications_listing",
                      "gsb_working_paper_listing",
