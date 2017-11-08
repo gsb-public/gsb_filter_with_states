@@ -17,7 +17,8 @@ function gsb_filter_with_states_views_pre_render ( &$view ) {
                      "admission_events",
                      "club_filters",
                      "gsb_all_research_listing",
-                     "msx_fellows");
+                     "msx_fellows",
+                     "seed_research_filters");
   if (in_array($view->name,  $view_list)) {
     drupal_add_js(drupal_get_path('module', 'gsb_filter_with_states') . '/js/gsb_filter_with_states.js');
   }
